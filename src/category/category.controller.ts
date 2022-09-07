@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { CategoryService } from './category.service';
 import { CreateCategoryDto } from './dto';
 
@@ -12,5 +12,18 @@ export class CategoryController {
   @Get()
   getAll() {
     return this.categoryService.getAll();
+  }
+  @Get(':id/products')
+  findOne(
+    @Param('id') id: string,
+    @Query('limit') limit?: string,
+    @Query('offset') offset?: string,
+  ) {
+    console.log(offset);
+    return this.categoryService.getProductsByCategoryId(
+      +id,
+      parseInt(limit),
+      parseInt(offset),
+    );
   }
 }

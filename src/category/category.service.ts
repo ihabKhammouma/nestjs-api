@@ -16,4 +16,17 @@ export class CategoryService {
   getAll() {
     return this.prisma.category.findMany();
   }
+  getProductsByCategoryId(id: number, limit?: number, offset?: number) {
+    return this.prisma.product.findMany({
+      take: limit,
+      skip: offset,
+      where: {
+        categories: {
+          some: {
+            id: id,
+          },
+        },
+      },
+    });
+  }
 }
