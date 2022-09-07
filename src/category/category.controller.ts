@@ -6,7 +6,7 @@ import { CreateCategoryDto } from './dto';
 export class CategoryController {
   constructor(private categoryService: CategoryService) {}
   @Post()
-  createCategory(@Body() dto: CreateCategoryDto) {
+  create(@Body() dto: CreateCategoryDto) {
     return this.categoryService.createCategory(dto);
   }
   @Get()
