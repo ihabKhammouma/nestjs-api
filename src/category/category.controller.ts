@@ -9,4 +9,8 @@ export class CategoryController {
   createCategory(@Body() dto: CreateCategoryDto) {
     return this.categoryService.createCategory(dto);
   }
+  @Get()
+  getAll() {
+    return this.categoryService.getAll();
+  }
 }

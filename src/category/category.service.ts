@@ -13,4 +13,7 @@ export class CategoryService {
 
     return category;
   }
+  getAll() {
+    return this.prisma.category.findMany();
+  }
 }
